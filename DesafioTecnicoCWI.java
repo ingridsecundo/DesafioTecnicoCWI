@@ -20,8 +20,11 @@ public class DesafioTecnicoCWI {
 
 	@Before
 	public void setUp() throws Exception {
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Ingrid\\Documents\\driver\\chromedriver.exe");
-		driver = new ChromeDriver();
+		System.setProperty("webdriver.chrome.driver","pathto\\chromedriver.exe");    
+		ChromeOptions options = new ChromeOptions();
+		options.setExperimentalOption("useAutomationExtension", false);
+		WebDriver driver = new ChromeDriver(options);
+		driver.get(url);
 		js = (JavascriptExecutor) driver;
 	}
 
@@ -50,7 +53,7 @@ public class DesafioTecnicoCWI {
 		driver.findElement(By.cssSelector(".c-search-page__link:nth-child(6) > .c-search-page__result-title")).click();
 		driver.findElement(By.cssSelector(".is-modal-open .o-modal__text-content")).click();
 		assertThat(driver.findElement(By.cssSelector(".is-modal-open .o-modal__text-content")).getText(), is(
-				"Sim, se vocÍ por Pessoa FÌsica, MEI ou Pessoa JurÌdica com faturamento de atÈ R$3 milhıes por ano, È possÌvel contratar para SuperGet Aluguel ou Compra, POS Chip Aluguel, POS 3G + Wi-Fi Aluguel, POS Digital Aluguel e TEF. ObservaÁ„o: essa condiÁ„o de recebimento n„o È v·lida para E-commerce."));
+				"Sim, se voc√™ por Pessoa F√≠sica, MEI ou Pessoa Jur√≠dica com faturamento de at√© R$3 milh√µes por ano, √© poss√≠vel contratar para SuperGet Aluguel ou Compra, POS Chip Aluguel, POS 3G + Wi-Fi Aluguel, POS Digital Aluguel e TEF. Observa√ß√£o: essa condi√ß√£o de recebimento n√£o √© v√°lida para E-commerce."));
 
 	}
 
